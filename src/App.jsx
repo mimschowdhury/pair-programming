@@ -8,6 +8,7 @@ function App() {
   const [quotes, setQuotes] = useState([]);
   const api_url ="https://api.adviceslip.com/advice";
 
+  //fetch API quotes
   async function getApi(ids) {
     let quoteList = [];
     for (let i = 0; i < ids.length; i++) {
@@ -15,8 +16,9 @@ function App() {
       quoteList.push(response.data.slip.advice);
     }
 
+    //duplicate quotes
     quoteList = [...quoteList, ...quoteList];
-
+    //shuffle quotes
     shuffleCards(quoteList);
 
     setQuotes(quoteList);
